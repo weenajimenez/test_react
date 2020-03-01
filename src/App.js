@@ -5,6 +5,16 @@ import constant from './appConstants';
 import HeaderMenu from './HeaderMenu';
 import SidebarMenu from './SidebarMenu';
 
+function Footer(props) {
+   return(
+    <div ui-view="footer" className="footer ">
+      <div className={props.isMenuOpen ? 'noCollapse': 'collapse'}>
+          <p className="footerInfo">{props.langData.FOOTER}</p>
+      </div>
+    </div>
+   );
+}
+
 class App extends React.Component{
   constructor(props){
       super(props);
@@ -58,6 +68,12 @@ class App extends React.Component{
          isMenuOpen={this.state.isMenuOpen}
          colapseMenu={this.colapseMenu}/>
          <SidebarMenu 
+         isMenuOpen={this.state.isMenuOpen}
+         langData={this.state.langData} />
+         <div ui-view="content" className="content ">
+           TODO
+         </div>
+         <Footer
          isMenuOpen={this.state.isMenuOpen}
          langData={this.state.langData} />
        </div>
